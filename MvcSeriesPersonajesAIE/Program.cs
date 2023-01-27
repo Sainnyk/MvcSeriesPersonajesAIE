@@ -1,7 +1,17 @@
+using Microsoft.EntityFrameworkCore;
+using MvcSeriesPersonajesAIE.Data;
+using MvcSeriesPersonajesAIE.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+string connectionString = builder.Configuration.GetConnectionString("sqlseries");
+builder.Services.AddDbContext<SeriesContext>(options => options.UseSqlServer(connectionString));
+
+builder.Services.AddTransient<RepositorySeries>();
+
 
 var app = builder.Build();
 

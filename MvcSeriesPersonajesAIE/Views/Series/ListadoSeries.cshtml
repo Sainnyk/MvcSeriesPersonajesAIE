@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MvcSeriesPersonajesAIE.Models.Serie>
+
+@{
+    ViewData["Title"] = "ListadoSeries";
+}
+
+<h1 style ="text-align:center;color:dodgerblue">Listado de Series</h1>
+<hr/>
+<p>
+    <a asp-action="Create" class="btn btn-dark">Añadir serie</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Anyo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                <img src="@item.Imagen" width="100" height="100">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Anyo)
+            </td>
+            <td>
+                <a asp-controller="Series" asp-action="Details" asp-route-id="@item.IdSerie" class="btn btn-outline-info">Detalles</a>
+                <a asp-controller="Series" asp-action="PersonajesSerie" asp-route-id="@item.IdSerie" class="btn btn-primary">Personajes</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

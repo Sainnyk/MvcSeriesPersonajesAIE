@@ -1,0 +1,21 @@
+﻿@model MvcSeriesPersonajesAIE.Models.Serie
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 style="text-align:center;color:mediumslateblue">Información</h1>
+<br/>
+<div class="mx-auto" style="width: 18rem; text-align:center">
+  <img class="card-img-top" src="@Model.Imagen" alt="@Model.Nombre">
+  <div class="card-body">
+    <h5 class="card-title">@Model.Nombre</h5>
+    <p class="card-text">Año: @Model.Anyo</p>
+ 
+  </div>
+</div>
+
+<br/>
+
+<a asp-action="ListadoSeries" style="color:mediumslateblue">Volver a Series</a>
+
